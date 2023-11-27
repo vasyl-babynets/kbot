@@ -13,10 +13,37 @@ import (
 	telebot "gopkg.in/telebot.v3"
 )
 
+var translationMap = map[rune]rune{
+	// translation map
+	'q': 'й',
+	'w': 'ц',
+	'e': 'у',
+	'r': 'к',
+	't': 'е',
+	'y': 'н',
+}
+
 var (
 	// TeleToken bot
 	TeleToken = os.Getenv("TELE_TOKEN")
 )
+
+// Translation function
+func translateToUkrainian(text string) string {
+	translatedRunes := make([]rune, 0, len(text))
+
+	for _, char := range text {
+		// If the symbol is in the match map, we replace it
+		if translatedChar, ok := translationMap[char]; ok {
+			translatedRunes = append(translatedRunes, translatedChar)
+		} else {
+			// If the symbol is not found, we leave it unchanged
+			translatedRunes = append(translatedRunes, char)
+		}
+	}
+
+	return string(translatedRunes)
+}
 
 // kbotCmd represents the kbot command
 var kbotCmd = &cobra.Command{
@@ -45,12 +72,15 @@ to quickly create a Cobra application.`,
 		kbot.Handle(telebot.OnText, func(m telebot.Context) error {
 
 			log.Print(m.Message().Payload, m.Text())
-		//	payload := m.Message().Payload
+			//	payload := m.Message().Payload
 			text := m.Text()
 
 			switch text {
 			case "hello":
 				err = m.Send(fmt.Sprintf("Hello I'm Kbot %s!", appVersion))
+			default:
+				translatedText := translateToUkrainian(text)
+				err = m.Send(translatedText)
 			}
 
 			return err
