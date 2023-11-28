@@ -37,3 +37,7 @@ export TELE_TOKEN
 `hello` - a telegram bot will respond with message of appVersion
 
 `qwerty` - a telegram bot will respond `йцукен`
+
+## Telegram bot URL
+
+[kbot](https://t.me/vasylbabynets_bot)
