@@ -5,9 +5,9 @@
 replicaCount: 1
 
 image:
-  repository: vasyl-babynets
+  repository: vbabynets
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v1.0.6-78b2636"
+  tag: "1.0.7-d8099fa"
   arch: amd64
 secret:
   name: kbot
