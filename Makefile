@@ -1,5 +1,6 @@
 APP=$(shell basename $(shell git remote get-url origin))
-REGISTRY=vbabynets
+REGISTRY="ghcr.io"
+REPOSYTORY="vasyl-babynets"
 VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
 TARGETOS=linux
 TARGETARCH=amd64
@@ -30,10 +31,10 @@ macOS: TARGETARCH=arm64
 macOS: build image
 
 image:
-	docker build . -t ${REGISTRY}/${APP}:${VERSION}-${TARGETOS}-${TARGETARCH}
+	docker build . -t ${REGISTRY}${REPOSYTORY}/${APP}:${VERSION}-${TARGETOS}-${TARGETARCH}
 
 push:
-	docker push ${REGISTRY}/${APP}:${VERSION}-${TARGETOS}-${TARGETARCH}
+	docker push ${REGISTRY}/${REPOSYTORY}/${APP}:${VERSION}-${TARGETOS}-${TARGETARCH}
 
 push-linux: push
 
@@ -43,7 +44,7 @@ push-macOS: TARGETARCH=arm64
 push-macOS: push
 
 clean:
-	docker rmi -f ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
+	docker rmi -f ${REGISTRY}/${REPOSYTORY}/${APP}:${VERSION}-${TARGETOS}-${TARGETARCH}
 
 clean-linux: clean
 
