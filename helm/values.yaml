@@ -7,7 +7,7 @@ image:
   registry: "ghcr.io"
   repository: "vasyl-babynets/kbot"
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "1.0.7-f9f8acf"
+  tag: "1.0.7-310538e"
   arch: amd64
   os: linux
 
