@@ -1,6 +1,6 @@
 APP=$(shell basename $(shell git remote get-url origin))
-REGISTRY="ghcr.io"
-REPOSYTORY="vasyl-babynets"
+REGISTRY=ghcr.io
+REPOSYTORY=vasyl-babynets
 VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
 TARGETOS=linux
 TARGETARCH=amd64
