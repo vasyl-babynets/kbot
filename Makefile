@@ -31,7 +31,7 @@ macOS: TARGETARCH=arm64
 macOS: build image
 
 image:
-	docker build . -t ${REGISTRY}${REPOSYTORY}/${APP}:${VERSION}-${TARGETOS}-${TARGETARCH}
+	docker build . -t ${REGISTRY}/${REPOSYTORY}/${APP}:${VERSION}-${TARGETOS}-${TARGETARCH}
 
 push:
 	docker push ${REGISTRY}/${REPOSYTORY}/${APP}:${VERSION}-${TARGETOS}-${TARGETARCH}
