@@ -41,3 +41,5 @@ export TELE_TOKEN
 ## Telegram bot URL
 
 [kbot](https://t.me/vasylbabynets_bot)
+
+## CI/CD
